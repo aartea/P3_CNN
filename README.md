@@ -27,37 +27,37 @@ Your work must:
 - Not crash or hang and should handle for when networking/internet is slow or unavailable
 - Have code that is semantically clean and well-organized README.md
 
-##Conceptualizing idea for New Hag
+##Conceptualizing ideas for News Hag:
 ##Writing out user Persona: Creating Alfred
 ###![](readmefiles/1.jpg)
 ##Meet Alfred!
 ###![](readmefiles/alfred.jpeg)
-##A closer look at Alfred's goals
+##A closer look at Alfred's goals:
 ###![](readmefiles/2.jpg)
-##Alfred's paint points
+##Alfred's pain points:
 ###![](readmefiles/3.jpg)
-##Alfred's motivations
+##Alfred's motivations:
 ###![](readmefiles/4.jpg)
-##Alfred's personality
+##Alfred's personality:
 ###![](readmefiles/5.jpg)
 #User Stories:
-##Below you'll find white-boarded out version as well as a pdf attached
-##When Alfred initially opens News Hag + when he Favorites
-###PDF**
-###![](readmefiles/us1.jpg)
+##Below you'll find white-boarded out version as well as a pdf version
+##When Alfred initially opens News Hag + when he favorites a news story
 ###Images of whiteboard**
 ###![](readmefiles/6.jpg)
 ##When Alfred shares a story
 ###![](readmefiles/7.jpg)
 ##When Alfred changes a font-size
 ###![](readmefiles/8.jpg)
+###PDF**
+###![](readmefiles/us1.jpg)
 #User flow diagram
 ##Here's a copy of our user flow diagram (when Alfred naviates the app)
 ###![](readmefiles/9.jpg)
 ##Competitive Research Analysis & Prioritized Features(CNC):
 ###Comparing  out competitors, the features we found most are the ones we are integrating
 ###![](readmefiles/CNC.jpg)
-##Breakdown of work done
+##Breakdown of work done (research)
 ###![](readmefiles/2b.jpg)
 ###![](readmefiles/1b.jpg)
 ###![](readmefiles/4b.jpg)
