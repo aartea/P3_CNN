@@ -40,6 +40,8 @@ Your work must:
 ###![](readmefiles/4.jpg)
 ##Alfred's personality:
 ###![](readmefiles/5.jpg)
+#Written User Persona:
+###![](readmefiles/WrittenUserPersonas.jpg)
 #User Stories:
 ##Below you'll find white-boarded out version as well as a pdf version
 ##When Alfred initially opens News Hag + when he favorites a news story
