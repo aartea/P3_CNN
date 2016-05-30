@@ -1,5 +1,6 @@
 
 #![](readmefiles/MainForProject.png)
+######Photo credit: Winston Chang
 
 ##News Hag: A news aggregator
 
@@ -28,7 +29,7 @@ Your work must:
 - Have code that is semantically clean and well-organized README.md
 
 ##Conceptualizing ideas for News Hag:
-##Writing out user Persona: Creating Alfred
+##Writing out a user Persona: Creating Alfred
 ###![](readmefiles/1.jpg)
 ##Meet Alfred!
 ###![](readmefiles/alfred.jpeg)
@@ -43,7 +44,7 @@ Your work must:
 #Written User Persona:
 ###![](readmefiles/WrittenUserPersonas.jpg)
 #User Stories:
-##Below you'll find white-boarded out version as well as a pdf version
+##Below you'll find a white-boarded out version as well as a written version
 ##When Alfred initially opens News Hag + when he favorites a news story
 ###Images of whiteboard**
 ###![](readmefiles/6.jpg)
