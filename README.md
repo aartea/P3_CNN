@@ -76,6 +76,11 @@ Your work must:
 
 ##ERD for Database (Favorites/Saved News feeds):
 
+##Paper Prototype 1 for News Hag:
+###![](readmefiles/p1p1.jpg)
+###![](readmefiles/p2p1.jpg)
+###![](readmefiles/p3p1.jpg)
+
 
 
 
