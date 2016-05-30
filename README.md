@@ -77,12 +77,16 @@ Your work must:
 ###![](readmefiles/i4.jpg)
 
 
-##ERD for Database (Favorites/Saved News feeds):
+##ERD for Database (Favorites/Saved News feeds):\
+######Still being worked on currently** (Under construction)
 
 ##Paper Prototype 1 for News Hag:
 ###![](readmefiles/p1p1.jpg)
 ###![](readmefiles/p2p1.jpg)
 ###![](readmefiles/p3p1.jpg)
+##..
+
+######Rest still under construction**
 
 
 
