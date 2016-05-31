@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -48,23 +49,19 @@ public class MainActivity extends AppCompatActivity
 
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
+        //If there is internet connection then the user will be presented with a notification that displays the top story
         if (networkInfo != null && networkInfo.isConnected()) {
-            Toast.makeText(getApplicationContext(), "Connection ready",
-                    Toast.LENGTH_SHORT).show();
-
             Intent intent1 = new Intent(this, MainActivity.class);
-
 
             PendingIntent pendingIntent1 = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent1, 0);
 
-
             NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
-            bigPictureStyle.bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_gallery)).build();
-
+            bigPictureStyle.bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.news)).build();
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
-            mBuilder.setSmallIcon(android.R.drawable.star_on);
-            mBuilder.setContentTitle("Connection Good!");
-            mBuilder.setContentText("Get SURFIN");
+            mBuilder.setSmallIcon(R.drawable.ic_chrome_reader_mode_black_24dp);
+            mBuilder.setContentTitle("BREAKING NEWS!");
+            mBuilder.setContentText("News story:");
             mBuilder.setContentIntent(pendingIntent1);
             mBuilder.setPriority(Notification.PRIORITY_MAX);
             mBuilder.setStyle(bigPictureStyle);
@@ -74,8 +71,7 @@ public class MainActivity extends AppCompatActivity
 
 
         } else {
-            Toast.makeText(getApplicationContext(), "Connection not ready",
-                    Toast.LENGTH_SHORT).show();
+            //If there is no internet connection present, the user is presented with a notification that lasts 30 seconds with the option to go into settings and turn it on via click
             Intent intent = new Intent(this, MainActivity.class);
             Intent intent1 = new Intent(Settings.ACTION_WIFI_SETTINGS);
 
@@ -83,23 +79,19 @@ public class MainActivity extends AppCompatActivity
             PendingIntent pendingIntent1 = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent1, 0);
 
 
-            NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
-            bigPictureStyle.bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_slideshow)).build();
-
+            NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
             mBuilder.setSmallIcon(android.R.drawable.stat_sys_warning);
             mBuilder.setContentTitle("No internet connection!");
             mBuilder.setContentText("To use the app, please enable WIFI, Thanks!");
             mBuilder.setContentIntent(pendingIntent);
             mBuilder.setPriority(Notification.PRIORITY_MAX);
-            mBuilder.setStyle(bigPictureStyle);
+            mBuilder.setStyle(bigTextStyle);
             mBuilder.addAction(android.R.drawable.ic_menu_info_details, "Connect WIFI", pendingIntent1);
 
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.notify(6, bigPictureStyle.build());
+            notificationManager.notify(6, bigTextStyle.build());
             notificationManager.cancel(1);
-
-
         }
     }
 
