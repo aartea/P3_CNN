@@ -1,5 +1,7 @@
 package badassapps.aaron.newshag;
 
+import android.util.Log;
+
 import com.loopj.android.http.*;
 
 import org.json.JSONArray;
@@ -14,21 +16,19 @@ import cz.msebera.android.httpclient.Header;
 public class NewsHagModel {
     private static NewsHagModel instance;
     private static ApiResponseHandler responseHandler;
-    GetCurrentDateTime getCurrentDateTime = new GetCurrentDateTime();
+    private static GetCurrentDateTime getCurrentDateTime = new GetCurrentDateTime();
 
     private static final String GUARDIAN_SEARCH_ALL = "http://content.guardianapis.com/search?";
     //Pattern is query and query,i.e. &tag=[selected_topic]/[selected_topic]
     private static final String GUARDIAN_TAG = "&tag=";
-    private static final String CURRENT_DATE = "&from-date="+ getCurrentDateTime;
+    private static final String CURRENT_DATE = "&from-date="+ getCurrentDateTime.getDate()
+            .toString();
 
     private static final String API_KEY = GuardianAppData.API_KEY;
     private static final String APIKEY_SEARCH_STRING = "&api_key="+API_KEY;
 
-    private static final String TAGS_STRING = "&tags=";
-    private static final String FORMAT_STRING = "&nojsoncallback=1&format=json";
-
     //Empty constructor
-    private NewsHagModel(){
+    NewsHagModel(){
     }
 
 
@@ -41,29 +41,30 @@ public class NewsHagModel {
         return instance;
     }
 
-    public void doRequest(String parameter){
+    public void doRequest(){
         AsyncHttpClient client = new AsyncHttpClient();
 
         //Ensure somewhere our wifi is on/off
 
         client.get(
-                GUARDIAN_SEARCH_QUERY + GUARDIAN_PHOTOS_SEARCH_STRING + APIKEY_SEARCH_STRING + TAGS_STRING + parameter + FORMAT_STRING,null,
+                GUARDIAN_SEARCH_ALL + GUARDIAN_TAG + "world/world"+
+                        APIKEY_SEARCH_STRING +
+                        CURRENT_DATE + APIKEY_SEARCH_STRING,null,
                 new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         {
-                            String id, secret, server, farm, address = null;
-                            //Need to reconstruct and grab JSON object for image! Return image when done.
-                            try {
-                                JSONArray jArray = response.getJSONObject("photos").getJSONArray("photo");
-                                JSONObject jObject = (JSONObject) jArray.get(0);
-                                id = jObject.getString("id");
-                                secret = jObject.getString("secret");
-                                server = jObject.getString("server");
-                                farm = jObject.getString("farm");
-                                address = "https://farm"+farm+".staticGUARDIAN.com/"+server+"/"+id+"_"+secret+"_m.jpg";
-                                responseHandler.handleResponse(address);
+                            String postList = "";
 
+                            try {
+                                JSONObject jsonObject = response.getJSONObject("response");
+                                JSONArray array = jsonObject.getJSONArray("results");
+                                    for(int i = 0; i < array.length(); i++) {
+                                        JSONObject title = array.getJSONObject(i);
+                                        String postTitle = title.getString("webTitle");
+                                        postList += postTitle + "\n";
+                                    }
+                                Log.d("TAG",postList);
                             }
                             catch (JSONException e) {
                                 e.printStackTrace();
@@ -75,6 +76,6 @@ public class NewsHagModel {
 
 
     public interface ApiResponseHandler{
-        void handleResponse(String response);
+        void handleResponse();
     }
 }
