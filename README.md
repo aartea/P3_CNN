@@ -78,8 +78,9 @@ Your work must:
 ###![](readmefiles/i4.jpg)
 
 
-##ERD for Database (Favorites/Saved News feeds):\
-######Still being worked on currently** (Under construction)
+##ERD for Database to integrate Favorites (Stretch goal):
+
+###![](readmefiles/erd.jpg)
 
 ##Paper Prototype 1 for News Hag:
 ###![](readmefiles/p1p1.jpg)
