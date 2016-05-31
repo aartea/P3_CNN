@@ -78,6 +78,8 @@
         android:layout_height="wrap_content"
         android:text="To change News Hag's text size, please select a button a below, Thanks!"
         android:textColor="#DC143C"
+        android:maxLines="3"
+        android:scrollbars="vertical"
         android:textSize="30sp"
         android:fontFamily="casual"
         android:id="@+id/changingText"

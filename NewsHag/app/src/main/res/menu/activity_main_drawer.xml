@@ -24,7 +24,7 @@
                 android:id="@+id/nav_fontsize"
                 android:icon="@drawable/binoculars"
                 android:title="Font Size"
-                android:onClick="clickingFontSize"/>
+                android:onClick="clickingFontSizew"/>
             <item
                 android:id="@+id/nav_favorites"
                 android:icon="@drawable/favorite"
