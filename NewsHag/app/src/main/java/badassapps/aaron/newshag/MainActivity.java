@@ -152,4 +152,29 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void clickingPolitics(MenuItem item) {
+        Intent clickingPoly = new Intent(MainActivity.this, ClickingPolitics.class);
+        startActivity(clickingPoly);
+    }
+
+    public void clickingWeather(MenuItem item) {
+        Intent clickingWeather = new Intent(MainActivity.this, ClickingWeather.class);
+        startActivity(clickingWeather);
+    }
+
+    public void clickingWorldNews(MenuItem item) {
+        Intent clickingWorldNews = new Intent(MainActivity.this, ClickingWorldNews.class);
+        startActivity(clickingWorldNews);
+    }
+
+    public void clickingFontSize(MenuItem item) {
+    }
+
+    public void clickingFavorites(MenuItem item) {
+        Intent clickingFavorites = new Intent(MainActivity.this, ClickingFavorites.class);
+        startActivity(clickingFavorites);
+    }
+
+    public void clickingShare(MenuItem item) {
+    }
 }
