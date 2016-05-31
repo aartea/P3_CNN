@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
             mBuilder.setSmallIcon(R.drawable.ic_chrome_reader_mode_black_24dp);
             mBuilder.setContentTitle("BREAKING NEWS!");
-            mBuilder.setContentText("News story:");
+            mBuilder.setContentText("The News Hag team: Check out the latest story!");
             mBuilder.setContentIntent(pendingIntent1);
             mBuilder.setPriority(Notification.PRIORITY_MAX);
             mBuilder.setStyle(bigPictureStyle);
