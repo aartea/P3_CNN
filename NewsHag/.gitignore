@@ -33,4 +33,5 @@ Thumbs.db
 build/
 
 #NDK
-obj/
+obj/[master f0a79d8] Fixing the problems, yay
+ 3 files changed, 12 insertions(+), 16 deletions(-)
