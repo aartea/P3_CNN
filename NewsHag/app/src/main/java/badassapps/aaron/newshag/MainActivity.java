@@ -25,15 +25,27 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONObject;
+
+import java.util.LinkedList;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, NewsHagModel
 .ApiResponseHandler{
 
-    TextView tv;
+
+    LinkedList<String> items;
+    ArrayAdapter<String> mAdapter;
+    ListView listView;
+    EditText editText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,7 +201,16 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void handleResponse(String response) {
-        tv = (TextView) findViewById(R.id.tv);
-        tv.setText(response);
+        items = new LinkedList<>();
+        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+        listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(mAdapter);
+        editText = (EditText) findViewById(R.id.editText);
+
+        for (int i = 0; i < response.length(); i++) {
+            items.add(response);
+        }
+        mAdapter.notifyDataSetChanged();
+
     }
 }
