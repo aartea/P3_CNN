@@ -3,17 +3,17 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_poly"
             android:icon="@drawable/political"
             android:title="Politics"
             android:onClick="clickingPolitics"/>
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_weather"
             android:icon="@drawable/weather"
             android:title="Weather"
             android:onClick="clickingWeather"/>
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_worldnews"
             android:icon="@drawable/globe"
             android:title="World News"
             android:onClick="clickingWorldNews"/>
@@ -21,12 +21,12 @@
     <item android:title="Customize">
         <menu>
             <item
-                android:id="@+id/nav_manage"
+                android:id="@+id/nav_fontsize"
                 android:icon="@drawable/binoculars"
                 android:title="Font Size"
                 android:onClick="clickingFontSize"/>
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_favorites"
                 android:icon="@drawable/favorite"
                 android:title="Favorites"
                 android:onClick="clickingFavorites"/>
