@@ -27,6 +27,12 @@ public class NewsHagModel {
     private static final String API_KEY = GuardianAppData.API_KEY;
     private static final String APIKEY_SEARCH_STRING = "&api_key="+API_KEY;
 
+    private static final String FORMAT_STRING = "&nojsoncallback=1&format=json";
+
+    private static final String CONSTRUCT = GUARDIAN_SEARCH_ALL + GUARDIAN_TAG + "world/world"+
+            APIKEY_SEARCH_STRING +
+            CURRENT_DATE + APIKEY_SEARCH_STRING + FORMAT_STRING;
+
     //Empty constructor
     NewsHagModel(){
     }
@@ -47,9 +53,7 @@ public class NewsHagModel {
         //Ensure somewhere our wifi is on/off
 
         client.get(
-                GUARDIAN_SEARCH_ALL + GUARDIAN_TAG + "world/world"+
-                        APIKEY_SEARCH_STRING +
-                        CURRENT_DATE + APIKEY_SEARCH_STRING,null,
+                CONSTRUCT ,null,
                 new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -64,7 +68,6 @@ public class NewsHagModel {
                                         String postTitle = title.getString("webTitle");
                                         postList += postTitle + "\n";
                                     }
-                                Log.d("TAG",postList);
                             }
                             catch (JSONException e) {
                                 e.printStackTrace();
@@ -73,7 +76,6 @@ public class NewsHagModel {
                     }
                 });
     }
-
 
     public interface ApiResponseHandler{
         void handleResponse();
