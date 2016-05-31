@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.NotificationCompat;
@@ -127,8 +128,6 @@ public class MainActivity extends AppCompatActivity
             mBuilder.setContentIntent(pendingIntent1);
             mBuilder.setPriority(Notification.PRIORITY_MAX);
             mBuilder.setStyle(bigPictureStyle);
-            mBuilder.addAction(android.R.drawable.ic_menu_info_details, "click to see message", pendingIntent1);
-
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.notify(1, bigPictureStyle.build());
             notificationManager.cancel(6);
@@ -140,10 +139,7 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "Connection not ready",
                     Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);
-            Intent intent1 = new Intent(Intent.ACTION_DIAL);
-
-
-
+            Intent intent1 = new Intent(Settings.ACTION_WIFI_SETTINGS);
 
             PendingIntent pendingIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent, 0);
             PendingIntent pendingIntent1 = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent1, 0);
@@ -161,7 +157,7 @@ public class MainActivity extends AppCompatActivity
             mBuilder.setContentIntent(pendingIntent);
             mBuilder.setPriority(Notification.PRIORITY_MAX);
             mBuilder.setStyle(bigPictureStyle);
-            mBuilder.addAction(android.R.drawable.ic_menu_info_details, "Connect WIFI", pendingIntent);
+            mBuilder.addAction(android.R.drawable.ic_menu_info_details, "Connect WIFI", pendingIntent1);
 
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.notify(6, bigPictureStyle.build());
