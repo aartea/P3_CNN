@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, NewsHagModel
 .ApiResponseHandler{
 
+    TextView tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -186,6 +188,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void handleResponse() {
+    public void handleResponse(String response) {
+        tv = (TextView) findViewById(R.id.tv);
+        tv.setText(response);
     }
 }

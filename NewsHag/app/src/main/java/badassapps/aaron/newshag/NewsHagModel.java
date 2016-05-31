@@ -1,6 +1,7 @@
 package badassapps.aaron.newshag;
 
 import android.util.Log;
+import android.widget.TextView;
 
 import com.loopj.android.http.*;
 
@@ -32,8 +33,9 @@ public class NewsHagModel {
     final String CONSTRUCT = GUARDIAN_SEARCH_ALL + GUARDIAN_TAG + "world/world"+
             CURRENT_DATE + APIKEY_SEARCH_STRING + FORMAT_STRING;
 
+
     //Empty constructor
-    NewsHagModel(){
+    private NewsHagModel(){
     }
 
 
@@ -49,34 +51,33 @@ public class NewsHagModel {
     public void doRequest(){
         AsyncHttpClient client = new AsyncHttpClient();
 
-        //Ensure somewhere our wifi is on/off
-
         client.get(
-                CONSTRUCT ,null,
+                "http://content.guardianapis.com/search?&tag=world/world&from-date=2016-05-31&api-key=6c07024d-c4eb-41c9-9184-2641163338a1" ,null,
                 new JsonHttpResponseHandler(){
+                    String title;
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         {
-                            String postList = "";
+//                            String postList = "";
 
                             try {
-                                JSONObject jsonObject = response.getJSONObject("response");
-                                JSONArray array = jsonObject.getJSONArray("results");
-                                    for(int i = 0; i < array.length(); i++) {
-                                        JSONObject title = array.getJSONObject(i);
-                                        String postTitle = title.getString("webTitle");
-                                        postList += postTitle + "\n";
-                                    }
+                                JSONArray jArray = response.getJSONObject("response").getJSONArray
+                                        ("results");
+                                JSONObject jObject = (JSONObject) jArray.get(2);
+
+                                title = jObject.getString("webTitle");
+                                responseHandler.handleResponse(title);
                             }
                             catch (JSONException e) {
                                 e.printStackTrace();
                             }
+
                         }
                     }
                 });
     }
 
     public interface ApiResponseHandler{
-        void handleResponse();
+        void handleResponse(String response);
     }
 }
