@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
             mBuilder.setSmallIcon(R.drawable.ic_chrome_reader_mode_black_24dp);
             mBuilder.setContentTitle("BREAKING NEWS!");
-            mBuilder.setContentText("News story:");
+            mBuilder.setContentText("The News Hag team: Check out the latest story!");
             mBuilder.setContentIntent(pendingIntent1);
             mBuilder.setPriority(Notification.PRIORITY_MAX);
             mBuilder.setStyle(bigPictureStyle);
@@ -152,4 +152,32 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void clickingPolitics(MenuItem item) {
+        Intent clickingPoly = new Intent(MainActivity.this, ClickingPolitics.class);
+        startActivity(clickingPoly);
+    }
+
+    public void clickingWeather(MenuItem item) {
+        Intent clickingWeather = new Intent(MainActivity.this, ClickingWeather.class);
+        startActivity(clickingWeather);
+    }
+
+    public void clickingWorldNews(MenuItem item) {
+        Intent clickingWorldNews = new Intent(MainActivity.this, ClickingWorldNews.class);
+        startActivity(clickingWorldNews);
+    }
+
+    public void clickingFontSize(MenuItem item) {
+        Intent clickingFontSize = new Intent(MainActivity.this, ChangingFontSize.class);
+        startActivity(clickingFontSize);
+
+    }
+
+    public void clickingFavorites(MenuItem item) {
+        Intent clickingFavorites = new Intent(MainActivity.this, ClickingFavorites.class);
+        startActivity(clickingFavorites);
+    }
+
+    public void clickingShare(MenuItem item) {
+    }
 }

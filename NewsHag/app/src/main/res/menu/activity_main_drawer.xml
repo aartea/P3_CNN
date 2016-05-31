@@ -5,26 +5,31 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/political"
-            android:title="Politics"/>
+            android:title="Politics"
+            android:onClick="clickingPolitics"/>
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/weather"
-            android:title="Weather"/>
+            android:title="Weather"
+            android:onClick="clickingWeather"/>
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/globe"
-            android:title="World News"/>
+            android:title="World News"
+            android:onClick="clickingWorldNews"/>
     </group>
     <item android:title="Customize">
         <menu>
             <item
                 android:id="@+id/nav_manage"
                 android:icon="@drawable/binoculars"
-                android:title="Font Size"/>
+                android:title="Font Size"
+                android:onClick="clickingFontSize"/>
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/favorite"
-                android:title="Favorites"/>
+                android:title="Favorites"
+                android:onClick="clickingFavorites"/>
         </menu>
 
     </item>
@@ -33,7 +38,8 @@
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share"/>
+                android:title="Share"
+                android:onClick="clickingShare"/>
 
         </menu>
     </item>
