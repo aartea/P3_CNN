@@ -29,8 +29,7 @@ public class NewsHagModel {
 
     private static final String FORMAT_STRING = "&nojsoncallback=1&format=json";
 
-    private static final String CONSTRUCT = GUARDIAN_SEARCH_ALL + GUARDIAN_TAG + "world/world"+
-            APIKEY_SEARCH_STRING +
+    final String CONSTRUCT = GUARDIAN_SEARCH_ALL + GUARDIAN_TAG + "world/world"+
             CURRENT_DATE + APIKEY_SEARCH_STRING + FORMAT_STRING;
 
     //Empty constructor

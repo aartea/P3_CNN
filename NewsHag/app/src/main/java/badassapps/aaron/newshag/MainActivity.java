@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity
         if (networkInfo != null && networkInfo.isConnected()) {
             Intent intent1 = new Intent(this, MainActivity.class);
 
+            NewsHagModel.getInstance(MainActivity.this).doRequest();
+
             PendingIntent pendingIntent1 = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent1, 0);
 
             NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
