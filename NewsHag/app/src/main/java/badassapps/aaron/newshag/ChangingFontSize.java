@@ -15,21 +15,21 @@ public class ChangingFontSize extends AppCompatActivity {
 
     public void ClickingLarge(View view) {
         Toast.makeText(ChangingFontSize.this,
-                "Changing font size to large, see text above for reference point", Toast.LENGTH_SHORT).show();
+                "Changing font size to large, see text above for ref", Toast.LENGTH_SHORT).show();
     }
 
     public void ClickingMedium(View view) {
         Toast.makeText(ChangingFontSize.this,
-                "Changing font size to medium, see text above for reference point", Toast.LENGTH_SHORT).show();
+                "Changing font size to medium, see text above for ref", Toast.LENGTH_SHORT).show();
     }
 
     public void ClickingSmall(View view) {
         Toast.makeText(ChangingFontSize.this,
-                "Changing font size to small, see text above for reference point", Toast.LENGTH_SHORT).show();
+                "Changing font size to small, see text above for ref", Toast.LENGTH_SHORT).show();
     }
 
     public void ClickingXSmall(View view) {
         Toast.makeText(ChangingFontSize.this,
-                "Changing font size to x-small, see text above for reference point", Toast.LENGTH_SHORT).show();
+                "Changing font size to x-small, see text above for ref", Toast.LENGTH_SHORT).show();
     }
 }
