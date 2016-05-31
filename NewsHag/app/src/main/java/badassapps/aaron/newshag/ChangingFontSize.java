@@ -1,5 +1,7 @@
 package badassapps.aaron.newshag;
 
+import android.graphics.Color;
+import android.support.annotation.ColorRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -42,6 +44,8 @@ public class ChangingFontSize extends AppCompatActivity {
         changingText = (TextView) findViewById(R.id.changingText);
         changingText.setMovementMethod(new ScrollingMovementMethod());
 
+        addListenerOnButton();
+
 
     }
 
@@ -61,31 +65,18 @@ public class ChangingFontSize extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                changingText = (TextView) findViewById(R.id.changingText);
+
+
                 Toast.makeText(ChangingFontSize.this,"On Button Click : " + String.valueOf(spinner.getSelectedItem()), Toast.LENGTH_SHORT).show();
+
+
+
+
             }
 
         });
     }
-
-//    public void ClickingLarge(View view) {
-//        Toast.makeText(ChangingFontSize.this,
-//                "Changing font size to large, see text above for reference point", Toast.LENGTH_SHORT).show();
-//    }
-//
-//    public void ClickingMedium(View view) {
-//        Toast.makeText(ChangingFontSize.this,
-//                "Changing font size to medium, see text above for reference point", Toast.LENGTH_SHORT).show();
-//    }
-//
-//    public void ClickingSmall(View view) {
-//        Toast.makeText(ChangingFontSize.this,
-//                "Changing font size to small, see text above for reference point", Toast.LENGTH_SHORT).show();
-//    }
-//
-//    public void ClickingXSmall(View view) {
-//        Toast.makeText(ChangingFontSize.this,
-//                "Changing font size to x-small, see text above for reference point", Toast.LENGTH_SHORT).show();
-//    }
 
 
 }
