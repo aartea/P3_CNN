@@ -1,8 +1,18 @@
 package badassapps.aaron.newshag;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +22,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,14 +35,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -97,5 +101,73 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void checkingconnection(View view) {
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Toast.makeText(getApplicationContext(), "Connection ready",
+                    Toast.LENGTH_SHORT).show();
+
+            Intent intent1 = new Intent(this, MainActivity.class);
+
+
+            PendingIntent pendingIntent1 = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent1, 0);
+
+
+
+            NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
+            bigPictureStyle.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.ic_menu_gallery)).build();
+
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
+            mBuilder.setSmallIcon(android.R.drawable.star_on);
+            mBuilder.setContentTitle("Connection Good!");
+            mBuilder.setContentText("Get SURFIN");
+            mBuilder.setContentIntent(pendingIntent1);
+            mBuilder.setPriority(Notification.PRIORITY_MAX);
+            mBuilder.setStyle(bigPictureStyle);
+            mBuilder.addAction(android.R.drawable.ic_menu_info_details, "click to see message", pendingIntent1);
+
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(1, bigPictureStyle.build());
+            notificationManager.cancel(6);
+
+
+
+
+        } else {
+            Toast.makeText(getApplicationContext(), "Connection not ready",
+                    Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent1 = new Intent(Intent.ACTION_DIAL);
+
+
+
+
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent, 0);
+            PendingIntent pendingIntent1 = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent1, 0);
+
+
+
+
+            NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
+            bigPictureStyle.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.ic_menu_slideshow)).build();
+
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
+            mBuilder.setSmallIcon(android.R.drawable.stat_sys_warning);
+            mBuilder.setContentTitle("No internet connection!");
+            mBuilder.setContentText("To use the app, please enable WIFI, Thanks!");
+            mBuilder.setContentIntent(pendingIntent);
+            mBuilder.setPriority(Notification.PRIORITY_MAX);
+            mBuilder.setStyle(bigPictureStyle);
+            mBuilder.addAction(android.R.drawable.ic_menu_info_details, "Connect WIFI", pendingIntent);
+
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(6, bigPictureStyle.build());
+            notificationManager.cancel(1);
+
+
+        }
     }
 }
