@@ -24,7 +24,8 @@
         <activity android:name=".ClickingPolitics" />
         <activity android:name=".ClickingWeather" />
         <activity android:name=".ClickingWorldNews" />
-        <activity android:name=".ClickingFavorites"></activity>
+        <activity android:name=".ClickingFavorites" />
+        <activity android:name=".ChangingFontSize"></activity>
     </application>
 
 </manifest>

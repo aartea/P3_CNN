@@ -168,6 +168,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void clickingFontSize(MenuItem item) {
+        Intent clickingFontSize = new Intent(MainActivity.this, ChangingFontSize.class);
+        startActivity(clickingFontSize);
+
     }
 
     public void clickingFavorites(MenuItem item) {

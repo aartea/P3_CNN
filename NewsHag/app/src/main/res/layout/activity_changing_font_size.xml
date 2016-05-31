@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="badassapps.aaron.newshag.ChangingFontSize">
+
+    <Button
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:text="Large"
+        android:id="@+id/large"
+        android:background="#DC143C"
+        android:textColor="#F0FFFF"
+        android:onClick="ClickingLarge"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/medium"
+        android:layout_alignStart="@+id/medium"
+        android:shadowRadius="4"
+        android:shadowColor="#000000"/>
+
+    <Button
+        android:layout_width="90dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:text="Medium"
+        android:id="@+id/medium"
+        android:background="#DC143C"
+        android:textColor="#F0FFFF"
+        android:onClick="ClickingMedium"
+        android:layout_below="@+id/large"
+        android:layout_alignLeft="@+id/small"
+        android:layout_alignStart="@+id/small"
+        android:shadowRadius="4"
+        android:shadowColor="#000000"/>
+
+    <Button
+        android:layout_width="90dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:text="Small"
+        android:id="@+id/small"
+        android:background="#DC143C"
+        android:textColor="#F0FFFF"
+        android:onClick="ClickingSmall"
+        android:layout_below="@+id/medium"
+        android:layout_alignLeft="@+id/xsmall"
+        android:layout_alignStart="@+id/xsmall"
+        android:shadowRadius="4"
+        android:shadowColor="#000000"/>
+
+    <Button
+        android:layout_width="90dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:text=" X-Small "
+        android:background="#DC143C"
+        android:textColor="#F0FFFF"
+        android:id="@+id/xsmall"
+        android:onClick="ClickingXSmall"
+        android:layout_below="@+id/small"
+        android:layout_centerHorizontal="true"
+        android:shadowRadius="4"
+        android:shadowColor="#000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please click a button to change the size of the font in News Hag, Thanks!"
+        android:textSize="30sp"
+        android:fontFamily="cursive"
+        android:textColor="#DC143C"
+        android:id="@+id/changingText"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
