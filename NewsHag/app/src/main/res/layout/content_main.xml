@@ -8,33 +8,23 @@
     tools:context="badassapps.aaron.newshag.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/top10" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/editText"
-        android:layout_centerVertical="true" />
-
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_alignEnd="@+id/listView"
-        android:layout_alignRight="@+id/listView"
-        android:text="GO"
-        android:textSize="10sp" />
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/textView"
+        android:layout_marginBottom="52dp" />
 
 
 </RelativeLayout>

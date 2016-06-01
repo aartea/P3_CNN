@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_new"
@@ -26,7 +25,8 @@
         <activity android:name=".ClickingWeather" />
         <activity android:name=".ClickingWorldNews" />
         <activity android:name=".ClickingFavorites" />
-        <activity android:name=".ChangingFontSize"></activity>
+        <activity android:name=".ChangingFontSize" />
+        <activity android:name=".Top10News"></activity>
     </application>
 
 </manifest>
