@@ -8,9 +8,9 @@
             android:title="Politics"
             android:onClick="clickingPolitics"/>
         <item
-            android:id="@+id/nav_weather"
-            android:icon="@drawable/weather"
-            android:title="Weather"
+            android:id="@+id/nav_nat_news"
+            android:icon="@drawable/nat_news"
+            android:title="National News"
             android:onClick="clickingWeather"/>
         <item
             android:id="@+id/nav_worldnews"
