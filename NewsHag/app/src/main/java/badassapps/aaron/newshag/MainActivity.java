@@ -53,9 +53,11 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         items = new LinkedList<>();
+        items.add("blah");
+        items.add("random");
         listView = (ListView) findViewById(R.id.listView);
-        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,items);
-
+        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+        listView.setAdapter(mAdapter);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -206,22 +208,17 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void handleResponse(LinkedList response) {
 
-        items.add("blah");
-        items.add("blah");
-        items.add("blah");
-        items.add("blah");
-        items.add("blah");
-        items.add("blah");
-
-
-
         items = response;
+        System.out.println(items);
+        mAdapter.clear();
         mAdapter.notifyDataSetChanged();
+        mAdapter.addAll(items);
 
 
+        System.out.println(mAdapter.getCount());
 
-
-        }
 
     }
+
+}
 
