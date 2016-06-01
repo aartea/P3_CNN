@@ -205,8 +205,12 @@ public class MainActivity extends AppCompatActivity
     public void handleResponse(LinkedList response) {
 
         items = response;
+        mAdapter.notifyDataSetChanged();
         listView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
+
+        }
+
     }
-}
+

@@ -69,9 +69,8 @@ public class NewsHagModel {
 
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject title = jsonArray.getJSONObject(i);
-                                    if (!title.has("webTitle")) continue;
-                                    items = new LinkedList<>();
-                                    items.add(title.getString("webTitle"));
+                                    if (!title.has("webUrl")) continue;
+                                    items.add(title.getString("webUrl"));
                                 }
                                 responseHandler.handleResponse(items);
                             }
