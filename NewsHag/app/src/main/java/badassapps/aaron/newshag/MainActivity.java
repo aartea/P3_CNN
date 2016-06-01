@@ -38,13 +38,12 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, NewsHagModel
-.ApiResponseHandler{
+        .ApiResponseHandler {
 
 
-    LinkedList<String> items;
     ArrayAdapter<String> mAdapter;
     ListView listView;
-    EditText editText;
+    LinkedList<String> items;
 
 
     @Override
@@ -53,6 +52,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        items = new LinkedList<>();
+        listView = (ListView) findViewById(R.id.listView);
+        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -200,16 +202,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void handleResponse(String response) {
-        items = new LinkedList<>();
-        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
-        listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(mAdapter);
-        editText = (EditText) findViewById(R.id.editText);
+    public void handleResponse(LinkedList response) {
 
-        for (int i = 0; i < response.length(); i++) {
-            items.add(response);
-        }
+        items = response;
+        listView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
     }
