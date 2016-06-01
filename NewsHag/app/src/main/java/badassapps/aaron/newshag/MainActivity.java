@@ -54,7 +54,9 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         items = new LinkedList<>();
         listView = (ListView) findViewById(R.id.listView);
-        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,items);
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -204,10 +206,19 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void handleResponse(LinkedList response) {
 
+        items.add("blah");
+        items.add("blah");
+        items.add("blah");
+        items.add("blah");
+        items.add("blah");
+        items.add("blah");
+
+
+
         items = response;
         mAdapter.notifyDataSetChanged();
-        listView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
+
+
 
 
         }
