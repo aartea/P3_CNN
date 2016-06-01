@@ -18,5 +18,4 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:src="@mipmap/ic_new"/>
 
-
 </LinearLayout>
