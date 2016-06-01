@@ -19,26 +19,32 @@ public class Top10News extends AppCompatActivity {
         setContentView(R.layout.activity_top10_news);
 
 
-        final String url = getIntent().getStringExtra("url");
-        webView = (WebView) findViewById(R.id.webView);
+        //To Get the article itself
+        final Article sameArticle = getIntent().getParcelableExtra("article");
+        sameArticle.getTITLE();
 
 
-        final ProgressDialog pd = ProgressDialog.show(this, "", "Loading...", true);
 
-
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setSupportZoom(true);
-        webView.getSettings().setBuiltInZoomControls(true);
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                if (pd != null && pd.isShowing()) {
-                    pd.dismiss();
-                }
-            }
-        });
-
-        webView.loadUrl(url);
+//        final String url = getIntent().getStringExtra("url");
+//        webView = (WebView) findViewById(R.id.webView);
+//
+//
+//        final ProgressDialog pd = ProgressDialog.show(this, "", "Loading...", true);
+//
+//
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.getSettings().setSupportZoom(true);
+//        webView.getSettings().setBuiltInZoomControls(true);
+//        webView.setWebViewClient(new WebViewClient() {
+//            @Override
+//            public void onPageFinished(WebView view, String url) {
+//                if (pd != null && pd.isShowing()) {
+//                    pd.dismiss();
+//                }
+//            }
+//        });
+//
+//        webView.loadUrl(url);
 
 
     }

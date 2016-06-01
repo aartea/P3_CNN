@@ -26,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -34,9 +35,9 @@ public class MainActivity extends AppCompatActivity
         .ApiResponseHandler {
 
 
-    ArrayAdapter<String> mAdapter;
     ListView listView;
-    LinkedList<String> items;
+    LinkedList<Article> items;
+    CustomAdapter adapter;
 
 
     @Override
@@ -47,8 +48,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         items = new LinkedList<>();
         listView = (ListView) findViewById(R.id.listView);
-        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
-        listView.setAdapter(mAdapter);
+        adapter = new CustomAdapter(this, R.layout.list_item, items);
+        listView.setAdapter(adapter);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -114,12 +115,13 @@ public class MainActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = new Intent(MainActivity.this, Top10News.class);
                 myIntent.putExtra("position", position);
-                String imageid = items.get(position);
-                myIntent.putExtra("url", imageid);
+                Article article = items.get(position);
+                myIntent.putExtra("article", article);
                 startActivity(myIntent);
             }
         });
     }
+
 
     @Override
     public void onBackPressed() {
@@ -207,12 +209,29 @@ public class MainActivity extends AppCompatActivity
     public void clickingShare(MenuItem item) {
     }
 
+
     @Override
     public void handleResponse(LinkedList response) {
         items = response;
-        mAdapter.clear();
-        mAdapter.notifyDataSetChanged();
-        mAdapter.addAll(items);
+        adapter.clear();
+        adapter.notifyDataSetChanged();
+        adapter.addAll(items);
     }
+
+    public class CustomAdapter extends ArrayAdapter {
+
+        Context mContext;
+        int mLayoutResource;
+        LinkedList<Article> mList;
+
+        public CustomAdapter(Context context, int layoutResource, LinkedList<Article> list) {
+            super(context, layoutResource, list);
+            mContext = context;
+            mLayoutResource = layoutResource;
+            mList = list;
+        }
+
+    }
+
 }
 
