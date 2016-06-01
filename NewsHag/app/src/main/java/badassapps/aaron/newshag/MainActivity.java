@@ -54,8 +54,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         items = new LinkedList<>();
-        items.add("blah");
-        items.add("random");
         listView = (ListView) findViewById(R.id.listView);
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         listView.setAdapter(mAdapter);
