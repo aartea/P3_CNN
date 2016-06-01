@@ -25,15 +25,26 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONObject;
+
+import java.util.LinkedList;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, NewsHagModel
-.ApiResponseHandler{
+        .ApiResponseHandler {
 
-    TextView tv;
+
+    ArrayAdapter<String> mAdapter;
+    ListView listView;
+    LinkedList<String> items;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +52,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        items = new LinkedList<>();
+        listView = (ListView) findViewById(R.id.listView);
+        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -188,8 +202,15 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void handleResponse(String response) {
-        tv = (TextView) findViewById(R.id.tv);
-        tv.setText(response);
+    public void handleResponse(LinkedList response) {
+
+        items = response;
+        mAdapter.notifyDataSetChanged();
+        listView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+
+
+        }
+
     }
-}
+

@@ -1,13 +1,14 @@
 package badassapps.aaron.newshag;
 
-import android.util.Log;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
 
 import com.loopj.android.http.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.LinkedList;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -54,19 +55,24 @@ public class NewsHagModel {
         client.get(
                 "http://content.guardianapis.com/search?&tag=world/world&from-date=2016-05-31&api-key=6c07024d-c4eb-41c9-9184-2641163338a1" ,null,
                 new JsonHttpResponseHandler(){
-                    String title;
+                    LinkedList<String> items;
+                    ArrayAdapter mAdapter;
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         {
-//                            String postList = "";
 
                             try {
-                                JSONArray jArray = response.getJSONObject("response").getJSONArray
-                                        ("results");
-                                JSONObject jObject = (JSONObject) jArray.get(2);
+                                JSONObject jsonObject = response.getJSONObject("response");
+                                JSONArray jsonArray = jsonObject.getJSONArray("results");
+                                items = new LinkedList<>();
 
-                                title = jObject.getString("webTitle");
-                                responseHandler.handleResponse(title);
+
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject title = jsonArray.getJSONObject(i);
+                                    if (!title.has("webUrl")) continue;
+                                    items.add(title.getString("webUrl"));
+                                }
+                                responseHandler.handleResponse(items);
                             }
                             catch (JSONException e) {
                                 e.printStackTrace();
@@ -78,6 +84,6 @@ public class NewsHagModel {
     }
 
     public interface ApiResponseHandler{
-        void handleResponse(String response);
+        void handleResponse(LinkedList response);
     }
 }
