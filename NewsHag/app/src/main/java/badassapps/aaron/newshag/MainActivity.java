@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         items = new LinkedList<>();
+        items.add(0,"politics");
+        items.add(1,"world");
+        items.add(2,"us-news");
         listView = (ListView) findViewById(R.id.listView);
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         listView.setAdapter(mAdapter);
@@ -156,7 +159,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_poly) {
-
         } else if (id == R.id.nav_weather) {
 
         } else if (id == R.id.nav_worldnews) {

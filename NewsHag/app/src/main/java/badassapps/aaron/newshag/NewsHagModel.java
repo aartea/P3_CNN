@@ -21,16 +21,13 @@ public class NewsHagModel {
     private static GetCurrentDateTime getCurrentDateTime = new GetCurrentDateTime();
 
     private static final String GUARDIAN_SEARCH_ALL = "http://content.guardianapis.com/search?";
-    //Pattern is query and query,i.e. &tag=[selected_topic]/[selected_topic]
+
     private static final String GUARDIAN_TAG = "&tag=";
     private static final String CURRENT_DATE = "&from-date="+ getCurrentDateTime.getDate();
 
     private static final String API_KEY = "&api-key="+ GuardianAppData.API_KEY;
 
 //    private static final String FORMAT_STRING = "&nojsoncallback=1&format=json";
-
-    private final String CONSTRUCT = GUARDIAN_SEARCH_ALL + GUARDIAN_TAG + "world/world"+
-            CURRENT_DATE + API_KEY;
 
 
     //Empty constructor
@@ -48,13 +45,17 @@ public class NewsHagModel {
     }
 
     public void doRequest(LinkedList response){
+
+        //Pattern is query and query,i.e. &tag=[selected_topic]/[selected_topic]; do this for onClick
+        String CONSTRUCT = GUARDIAN_SEARCH_ALL + GUARDIAN_TAG + response + "/" + response +
+                CURRENT_DATE + API_KEY;
+
         AsyncHttpClient client = new AsyncHttpClient();
 
         client.get(
                 CONSTRUCT ,null,
                 new JsonHttpResponseHandler(){
                     LinkedList<String> items;
-                    ArrayAdapter mAdapter;
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         {
