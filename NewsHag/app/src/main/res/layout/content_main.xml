@@ -35,4 +35,6 @@
         android:layout_alignRight="@+id/listView"
         android:text="GO"
         android:textSize="10sp" />
+
+
 </RelativeLayout>
