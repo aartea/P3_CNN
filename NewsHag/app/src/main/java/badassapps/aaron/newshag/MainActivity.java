@@ -25,6 +25,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -117,6 +118,17 @@ public class MainActivity extends AppCompatActivity
             notificationManager.notify(6, bigTextStyle.build());
             notificationManager.cancel(1);
         }
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(MainActivity.this, Top10News.class);
+                myIntent.putExtra("position", position);
+                String imageid = items.get(position);
+                myIntent.putExtra("url", imageid);
+                startActivity(myIntent);
+            }
+        });
     }
 
     @Override
@@ -219,6 +231,8 @@ public class MainActivity extends AppCompatActivity
 
 
     }
+
+
 
 }
 
